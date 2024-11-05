@@ -1,0 +1,82 @@
+# Python files
+*.py[cod]
+__pycache__/
+*.so
+
+# Django files
+*/manage.py
+
+# Virtual environment
+venv/
+
+# Environment variables
+.env
+/.env
+
+# Users tokens and my credentials
+*/tokens/*
+*/token_json_files/*
+*/credentials.json
+
+# Local trash
+trash/
+
+# Django migrations
+*/migrations/*
+
+# Static and media files
+staticfiles/
+media/
+
+# Local development settings
+local_settings.py
+
+# IDE files
+*/vscode/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.idea/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Test results
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Pytest cache
+.pytest_cache/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# System-specific files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Logs and databases
+*.log
+*.pot
+*.mo
+*.po
+*.sqlite3
+
+# Tmp credential file - Google Calendar
+dane_logowania__google_calendar__my_way_app.json
+
+

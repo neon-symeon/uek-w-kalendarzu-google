@@ -1,0 +1,43 @@
+<div class="flex justify-end mt-6">
+  <button type="submit"
+          onclick="showSpinner()"
+          class="h-4 w-14 bg-blue-500 text-xs text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition">
+    dodaj
+  </button>
+</div>
+<script>
+  let elapsedSeconds = 0;
+  let timerInterval;
+
+  function showSpinner() {
+    document.getElementById("spinner").classList.remove("hidden");
+
+    // Po 4 sekundach pokaż dodatkowy komunikat
+    setTimeout(showLongWaitMessage, 4000);
+
+    // Uruchom licznik czasu
+    startTimer();
+  }
+
+  function showLongWaitMessage() {
+    document.getElementById("long-wait-message").classList.remove("hidden");
+  }
+
+  function startTimer() {
+    // Resetuj licznik
+    elapsedSeconds = 0;
+    document.getElementById("elapsed-time").textContent = elapsedSeconds;
+
+    // Uruchom interwał, aby aktualizować licznik co sekundę
+    timerInterval = setInterval(() => {
+      elapsedSeconds++;
+      document.getElementById("elapsed-time").textContent = elapsedSeconds;
+    }, 1000);
+  }
+
+  // Funkcja zatrzymująca licznik (opcjonalnie, np. po zakończeniu procesu)
+  function stopTimer() {
+    clearInterval(timerInterval);
+  }
+
+</script>

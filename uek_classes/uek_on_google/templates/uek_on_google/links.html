@@ -1,0 +1,39 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="flex flex-col sm:px-12 items-center justify-center min-h-screen bg-gray-100">
+        <h1 class="text-lg sm:text-xl xl:text-3xl font-bold mb-3 text-center text-gray-700">
+            Dodaje wykłady i ćwiczenia
+            <br>
+            do Twojego kalendarza Google
+        </h1>
+        <h2 class="text-sm sm:text-lg xl:text-xl font-bold mb-3 text-center text-gray-700">
+            Wklej linki (adresy url) do swoich zajęć na UEK w pola poniżej &darr;
+        </h2>
+        <!-- Element spinnera, początkowo ukryty -->
+        <div id="spinner"
+             class="hidden fixed inset-0 flex flex-col items-center justify-center bg-gray-900 bg-opacity-75">
+            <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 mb-4"></div>
+            <p class="text-white text-lg">Trwa dodawanie zajęć do kalendarza...</p>
+            <p id="long-wait-message"
+               class="hidden justify-center text-white text-sm mt-4">
+                ...trwa dodawanie zajęć do kalendarza google... potrwa to nie więcej niż 3 minuty... <span id="elapsed-time">0</span> sekund.
+            </p>
+        </div>
+        <!-- Formularz -->
+        <form method="post"
+              action="{% url 'uek_on_google:classes' %}"
+              class="w-full lg:max-w-2xl md:px-12 md:mx-12 bg-gray-50 p-8 rounded-lg shadow-md space-y-4">
+            {% csrf_token %}
+            {% include "uek_on_google/url-field.html" with val="https://planzajec.uek.krakow.pl/index.php?typ=G&id=238461&okres=2" %}
+            {% include "uek_on_google/url-field.html" with val="https://planzajec.uek.krakow.pl/index.php?typ=G&id=154721&okres=2" %}
+            {% include "uek_on_google/forward-button.html" %}
+        </form>
+        <p class="my-2 text-xs text-gray-600">jesteś zalogowany jako: {{ request.user.email }}</p>
+        <button type="button"
+                onclick="location.href='{% url 'account_logout' %}'"
+                class="h-4 w-14 mb-2 text-xs font-medium text-gray-800 focus:outline-none bg-white rounded-lg  hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-100 dark:hover:text-white dark:hover:bg-gray-300">
+            wyloguj
+        </button>
+    </div>
+{% endblock content %}
